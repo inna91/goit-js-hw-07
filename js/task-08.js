@@ -3,16 +3,12 @@ const renderRef = document.querySelector("[data-action = render]");
 const destroyRef = document.querySelector("[data-action = destroy]");
 const boxesRef = document.getElementById("boxes");
 
+let startSize = 30;
+
 renderRef.addEventListener("click", renderAmountHandler);
 destroyRef.addEventListener("click", destroyCollectionHandler);
 
-function renderAmountHandler() {
-  const amount = document.querySelector("#controls input").value;
-  createBoxes(amount);
-}
-
 function createBoxes(amount) {
-  let startSize = 30;
   const newDiv = document.createDocumentFragment();
   for (let i = 0; i < amount; i++) {
     let nextDivSize = startSize + i * 10;
@@ -21,6 +17,11 @@ function createBoxes(amount) {
     newDiv.appendChild(div);
   }
   boxesRef.appendChild(newDiv);
+}
+
+function renderAmountHandler() {
+  const amount = document.querySelector("#controls input").value;
+  createBoxes(amount);
 }
 
 function destroyCollectionHandler() {

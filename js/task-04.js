@@ -8,7 +8,7 @@ const buttonDecrementRef = document.querySelector(
 );
 const valueRef = document.getElementById("value");
 
-let value = 0;
+let value;
 
 const valueIncrement = () => {
   value += 1;

@@ -20,14 +20,32 @@ const images = [
   },
 ];
 
+// const createImageTag = (image) => {
+//   const itemRef = document.createElement("li");
+//   const imageItem = document.createElement("img");
+//   imageItem.setAttribute("src", image.url);
+//   imageItem.setAttribute("alt", image.alt);
+//   itemRef.appendChild(imageItem);
+//   return itemRef;
+// };
+
+// const imageItems = images.map((image) => createImageTag(image));
+// listRef.append(...imageItems);
+
+/* With createDocumentFragment */
+
+const fragment = document.createDocumentFragment();
 const createImageTag = (image) => {
   const itemRef = document.createElement("li");
   const imageItem = document.createElement("img");
   imageItem.setAttribute("src", image.url);
   imageItem.setAttribute("alt", image.alt);
+  imageItem.setAttribute("heigth", "350px");
+  imageItem.setAttribute("width", "350px");
   itemRef.appendChild(imageItem);
-  return itemRef;
+  fragment.appendChild(itemRef);
+  return fragment;
 };
 
 const imageItems = images.map((image) => createImageTag(image));
-listRef.append(...imageItems);
+listRef.append(fragment);
