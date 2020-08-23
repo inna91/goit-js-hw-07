@@ -8,16 +8,16 @@ const buttonDecrementRef = document.querySelector(
 );
 const valueRef = document.getElementById("value");
 
-let value;
+let counterValue = 0;
 
 const valueIncrement = () => {
-  value += 1;
-  valueRef.textContent = value;
+  counterValue += 1;
+  valueRef.textContent = counterValue;
 };
 
 const valueDecrement = () => {
-  value -= 1;
-  valueRef.textContent = value;
+  counterValue -= 1;
+  valueRef.textContent = counterValue;
 };
 
 buttonIncrementRef.addEventListener("click", valueIncrement);
