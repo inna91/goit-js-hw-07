@@ -10,14 +10,23 @@ destroyRef.addEventListener("click", destroyCollectionHandler);
 
 function createBoxes(amount) {
   const newDiv = document.createDocumentFragment();
+
   for (let i = 0; i < amount; i++) {
-    let nextDivSize = startSize + i * 10;
-    const div = document.createElement("div");
-    div.style.cssText = `width: ${nextDivSize}px; height: ${nextDivSize}px; background-color: rgba( ${randomHandler()} , ${randomHandler()} , ${randomHandler()} )`;
-    newDiv.appendChild(div);
+    const size = startSize + i * 10;
+    const box = createDiv(size);
+    newDiv.appendChild(box);
   }
   boxesRef.appendChild(newDiv);
 }
+
+const createDiv = (size) => {
+  const div = document.createElement("div");
+  div.style.width = `${size}px`;
+  div.style.height = `${size}px`;
+  div.style.backgroundColor = randomHandler();
+
+  return div;
+};
 
 function renderAmountHandler() {
   const amount = document.querySelector("#controls input").value;
@@ -29,5 +38,6 @@ function destroyCollectionHandler() {
 }
 
 function randomHandler() {
-  return Math.floor(Math.random() * 256);
+  const color = Math.floor(Math.random() * Math.pow(256, 3)).toString(16);
+  return "#" + color;
 }
